@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8'?>  
+<!DOCTYPE hibernate-configuration PUBLIC  
+          "-//Hibernate/Hibernate Configuration DTD 3.0//EN"  
+          "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">  
+          
+<hibernate-configuration>
+	<session-factory>
+		<!-- 
+		Will Drop the Table and will recreate the Table Again.
+		<property name="hbm2ddl.auto">create</property> 
+		
+		-->
+		<!--  SQL SERVER Properties -->
+		<!-- <property name="hbm2ddl.auto">update</property>
+		<property name="dialect">org.hibernate.dialect.SQLServer2012Dialect</property>
+		<property name="connection.url">jdbc:sqlserver://10.51.2.57:1433;DatabaseName=VasanthHibernate</property>
+		<property name="connection.username">sa</property>
+		<property name="connection.password">Keynote@123</property>
+		<property name="connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
+		<property name="show_sql">true</property>
+		 -->
+		 
+		 <!-- MySQL Properties -->
+		<property name="hbm2ddl.auto">update</property>
+		<property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
+		<property name="connection.url">jdbc:mysql://127.0.0.1:3306/hibernatevasanth</property>
+		<property name="connection.username">root</property>
+		<property name="connection.password">password</property>
+		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="show_sql">true</property>
+		<property name="cache.use_second_level_cache">true</property>
+		<property name="cache.provider_class">org.hibernate.cache.EhCacheProvider</property>
+		<property name="cache.use_query_cache">true</property>
+		<property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</property>
+		
+		<!-- Class Name without any annonation -->
+	<!-- 	<mapping resource="employee.hbm.xml"></mapping> -->
+		
+		<!-- Names the annonated Entity Class -->
+	<!--	<mapping resource="UserDetails.hbm.xml"></mapping> -->
+		 <mapping class="com.hibernate.web.UserDetails"></mapping> 
+		<mapping class="com.hibernate.web.Vehicle"></mapping>
+		<mapping class="com.hibernate.web.TwoWheeler"></mapping>
+		<mapping class="com.hibernate.web.FourWheeler"></mapping> 
+		<!-- <mapping class="com.hibernate.web.LoginPrimary"></mapping> -->
+	</session-factory>
+</hibernate-configuration>
