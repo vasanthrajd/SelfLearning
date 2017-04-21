@@ -102,6 +102,25 @@
 				<artifactId>hibernate-ehcache</artifactId>
 				<version>5.2.9.Final</version>
 			</dependency>
+			
+		 <dependency>
+			  <groupId>com.fasterxml.jackson.core</groupId>
+			  <artifactId>jackson-core</artifactId>
+			  <version>2.5.3</version>
+			</dependency>
+			
+			<dependency>
+			  <groupId>com.fasterxml.jackson.core</groupId>
+			  <artifactId>jackson-annotations</artifactId>
+			  <version>2.5.3</version>
+			</dependency>
+			
+			<dependency>
+			  <groupId>com.fasterxml.jackson.core</groupId>
+			  <artifactId>jackson-databind</artifactId>
+			  <version>2.5.3</version>
+			</dependency> 
+			
 	</dependencies>
 	<properties>
 		<jersey.version>2.16</jersey.version>

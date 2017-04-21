@@ -1,7 +1,9 @@
 package org.vasanth.messager.resource;
 
 import java.net.URI;
+import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 import javax.ws.rs.BeanParam;
 import javax.ws.rs.Consumes;
@@ -19,7 +21,9 @@ import javax.ws.rs.core.UriInfo;
 import javax.xml.soap.MessageFactory;
 
 import org.vasanth.messager.bean.MessageFilter;
+import org.vasanth.messager.model.ArrayMessage;
 import org.vasanth.messager.model.Message;
+import org.vasanth.messager.model.Profile;
 import org.vasanth.messager.service.MessageServices;
 
 /*
@@ -144,6 +148,24 @@ public class MessageResource {
 	@Path("/{messageId}/comments")
 	public CommentResource getCommentResource(){
 		return new CommentResource();
+	}
+	
+	@POST
+	@Path("/arraymessage")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public String getOutput(ArrayMessage arrayMessage){
+		
+		Set<Message> message=(Set<Message>) arrayMessage.getMessage();
+		System.out.println(message.size());
+		for(Message msg:message){
+			System.out.println(msg.getMessage());
+			System.out.println(msg.getAuthor());
+			
+		}
+		Profile profile=arrayMessage.getProfile();
+		System.out.println(profile.getFirstName());
+		System.out.println(profile.getLastName());
+		return "ArrayMessage"; 
 	}
 	
 }

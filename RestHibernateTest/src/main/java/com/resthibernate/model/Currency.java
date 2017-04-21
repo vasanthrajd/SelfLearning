@@ -4,19 +4,45 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.xml.bind.annotation.XmlRootElement;
 
 import org.hibernate.annotations.Type;
 
 @Entity
+@XmlRootElement
 public class Currency {
-	
-	@Id @GeneratedValue(strategy=GenerationType.AUTO)
+	/*	
+	 * Making the @Id acts as a ForeignKey of Country.
+	 * @GenericGenerator(name = "foreignString", strategy = "foreign",
+	    parameters=@Parameter(name = "property", value = "country"))
+
+		@GeneratedValue(generator="foreignString") 
+	*/
+
+	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	private String name;
 	private String symbol;
 	private String shortName;
 	@Type(type = "yes_no")
 	private boolean isDefault;
+	
+	/*
+	 * To make the Currency and Country Tightly Coupled One to One Mapping.
+	 * By Marking Field of Country to Map with only one Country.
+	@OneToOne 
+	@PrimaryKeyJoinColumn
+	private Country country;
+	
+	
+	public Country getCountry() {
+		return country;
+	}
+	public void setCountry(Country country) {
+		this.country = country;
+	}
+	*/
+	
 	public int getId() {
 		return id;
 	}

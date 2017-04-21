@@ -6,7 +6,7 @@
 <hibernate-configuration>
 	<session-factory>
 		 <!-- MySQL Properties -->
-		<property name="hbm2ddl.auto">update</property>
+		<property name="hbm2ddl.auto">create</property>
 		<property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
 		<property name="connection.url">jdbc:mysql://127.0.0.1:3306/resthibernate</property>
 		<property name="connection.username">root</property>
@@ -21,10 +21,14 @@
 		
 		<!-- @Entity Annonated Model Class for Hibernate -->
 		<mapping class="com.resthibernate.model.Country"></mapping>
-		<!-- <mapping class="com.resthibernate.model.Currency"></mapping>
-		<mapping class="com.resthibernate.model.Carrier"></mapping>		
-		<mapping class="com.resthibernate.model.TimeZone"></mapping> -->  
-			
+		<mapping class="com.resthibernate.model.Currency"></mapping>
+		<mapping class="com.resthibernate.model.TimeZone"></mapping>  
+	<!--	<mapping class="com.resthibernate.model.Carrier"></mapping>		
+	 
+		
+		 <mapping class="com.resthibernate.model.TimeZone"></mapping>
+		<mapping class="com.resthibernate.model.UserDetails"></mapping> -->
+	    	
 		
 	</session-factory>
 </hibernate-configuration>

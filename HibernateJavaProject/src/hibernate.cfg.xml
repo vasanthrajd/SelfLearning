@@ -21,7 +21,7 @@
 		 -->
 		 
 		 <!-- MySQL Properties -->
-		<property name="hbm2ddl.auto">update</property>
+		<property name="hbm2ddl.auto">create</property>
 		<property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
 		<property name="connection.url">jdbc:mysql://127.0.0.1:3306/hibernatevasanth</property>
 		<property name="connection.username">root</property>
@@ -37,11 +37,18 @@
 	<!-- 	<mapping resource="employee.hbm.xml"></mapping> -->
 		
 		<!-- Names the annonated Entity Class -->
-	<!--	<mapping resource="UserDetails.hbm.xml"></mapping> -->
+	<!--	<mapping resource="UserDetails.hbm.xml"></mapping> 
 		 <mapping class="com.hibernate.web.UserDetails"></mapping> 
 		<mapping class="com.hibernate.web.Vehicle"></mapping>
 		<mapping class="com.hibernate.web.TwoWheeler"></mapping>
-		<mapping class="com.hibernate.web.FourWheeler"></mapping> 
+		<mapping class="com.hibernate.web.FourWheeler"></mapping> -->
+		<mapping class="com.hibernate.web.Country"></mapping> 
+		<mapping class="com.hibernate.web.Currency"></mapping>  
+		<mapping class="com.hibernate.web.TimeZone"></mapping>
+		<mapping class="com.hibernate.web.Carrier"></mapping>
+		<mapping class="com.hibernate.web.UserInfo"></mapping>
+		<mapping class="com.hibernate.web.GuestUser"></mapping>
+		<mapping class="com.hibernate.web.WorkingUser"></mapping>
 		<!-- <mapping class="com.hibernate.web.LoginPrimary"></mapping> -->
 	</session-factory>
 </hibernate-configuration>

@@ -8,6 +8,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.resthibernate.model.Country;
 import com.resthibernate.model.CountryResponse;
 import com.resthibernate.model.ResponseResult;
