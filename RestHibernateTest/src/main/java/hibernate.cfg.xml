@@ -6,12 +6,26 @@
 <hibernate-configuration>
 	<session-factory>
 		 <!-- MySQL Properties -->
-		<property name="hbm2ddl.auto">create</property>
+		<!-- <property name="hbm2ddl.auto">update</property>
 		<property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
 		<property name="connection.url">jdbc:mysql://127.0.0.1:3306/resthibernate</property>
 		<property name="connection.username">root</property>
 		<property name="connection.password">password</property>
 		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="show_sql">true</property>
+		<property name="cache.use_second_level_cache">true</property>
+		<property name="cache.provider_class">org.hibernate.cache.EhCacheProvider</property>
+		<property name="cache.use_query_cache">true</property>
+		<property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</property>
+		 -->
+		<!--  SQL SERVER Properties -->
+		
+		<property name="hbm2ddl.auto">update</property>
+		<property name="dialect">org.hibernate.dialect.SQLServer2012Dialect</property>
+		<property name="connection.url">jdbc:sqlserver://10.51.2.57:1433;DatabaseName=VasanthHibernate</property>
+		<property name="connection.username">sa</property>
+		<property name="connection.password">Keynote@123</property>
+		<property name="connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
 		<property name="show_sql">true</property>
 		<property name="cache.use_second_level_cache">true</property>
 		<property name="cache.provider_class">org.hibernate.cache.EhCacheProvider</property>
@@ -23,10 +37,13 @@
 		<mapping class="com.resthibernate.model.Country"></mapping>
 		<mapping class="com.resthibernate.model.Currency"></mapping>
 		<mapping class="com.resthibernate.model.TimeZone"></mapping>  
-	<!--	<mapping class="com.resthibernate.model.Carrier"></mapping>		
+		<mapping class="com.resthibernate.model.Carrier"></mapping>		
+		<mapping class="com.resthibernate.model.UserDetails"></mapping>
+	<!-- <mapping class="com.resthibernate.model.Carrier"></mapping>
+		<mapping class="com.resthibernate.model.Carrier"></mapping>
 	 
 		
-		 <mapping class="com.resthibernate.model.TimeZone"></mapping>
+		<mapping class="com.resthibernate.model.TimeZone"></mapping>
 		<mapping class="com.resthibernate.model.UserDetails"></mapping> -->
 	    	
 		

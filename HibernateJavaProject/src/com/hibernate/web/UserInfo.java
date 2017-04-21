@@ -1,4 +1,4 @@
-package com.resthibernate.model;
+package com.hibernate.web;
 
 import java.io.Serializable;
 
@@ -12,13 +12,11 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToOne;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
-@XmlRootElement
 @Inheritance(strategy=InheritanceType.JOINED)
-public class UserDetails implements Serializable{
+@DiscriminatorValue("UserInfo")
+public class UserInfo implements Serializable{
 	@Id @GeneratedValue(strategy=GenerationType.AUTO)
 	private int uid;
 	private String firstName;
@@ -26,11 +24,16 @@ public class UserDetails implements Serializable{
 	@Id
 	private String emailId;
 	
-	@XmlElement
 	@OneToOne(cascade=CascadeType.ALL)
 	private Country country;
 	
-
+	
+	public Country getCountry() {
+		return country;
+	}
+	public void setCountry(Country country) {
+		this.country = country;
+	}
 	public int getUid() {
 		return uid;
 	}
@@ -54,13 +57,6 @@ public class UserDetails implements Serializable{
 	}
 	public void setEmailId(String emailId) {
 		this.emailId = emailId;
-	}
-	public Country getCountry() {
-		return country;
-	}
-	public void setCountry(Country country) {
-		this.country = country;
-	}
-		
+	}		
 	
 }

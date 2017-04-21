@@ -23,52 +23,56 @@ public class CountryService {
 
 	public static boolean addCountry(Country country){
 		
-			/*System.out.println("Country Info"+country.toString());
-			if(!checkCountry(country)){*/
-			Country localCountry=country;
-			localCountry.setId(country.getId());
-			localCountry.setCode(country.getCode());
-			localCountry.setSupportPaypal(country.isSupportPaypal());	
 			
-			Currency localCurrency=country.getCurrency();
-			System.out.println(localCurrency==null?"True":"false");
-			if(localCurrency!=null){
-				localCurrency.setName(country.getCurrency().getName());
-				System.out.println(localCurrency.getName());
-				localCurrency.setShortName(country.getCurrency().getShortName());
-				System.out.println(localCurrency.getShortName());
-				localCurrency.setSymbol(country.getCurrency().getSymbol());
-				System.out.println(localCurrency.getSymbol());
-				localCurrency.setDefault(country.getCurrency().isDefault());
-				System.out.println(localCurrency.isDefault());
-				localCountry.setCurrency(localCurrency);
+			if(!checkCountry(country)){
+				Country localCountry=country;
+				localCountry.setId(country.getId());
+				localCountry.setCode(country.getCode());
+				localCountry.setSupportPaypal(country.isSupportPaypal());	
+				
+				Currency localCurrency=country.getCurrency();
 			
-			}			
-			Set<TimeZone> localTimeZone= (Set<TimeZone>) country.getTimeZone();
-			for(TimeZone tmp:localTimeZone){
-				System.out.println(tmp.getName());
-			}
-			if(localTimeZone!=null){
-				for(TimeZone tmp:localTimeZone){
-					localCountry.getTimeZone().add(tmp);
+				if(localCurrency!=null){
+					localCurrency.setName(country.getCurrency().getName());
+					
+					localCurrency.setShortName(country.getCurrency().getShortName());
+			
+					localCurrency.setSymbol(country.getCurrency().getSymbol());
+			
+					localCurrency.setDefault(country.getCurrency().isDefault());
+			
+					
+					
+					localCountry.setCurrency(localCurrency);
+				
+				}			
+				Set<TimeZone> localTimeZone= (Set<TimeZone>) country.getTimeZone();
+				
+				if(localTimeZone!=null){
+					for(TimeZone tmpTimeZone:localTimeZone){
+						tmpTimeZone.setCountry(localCountry);
+						localCountry.getTimeZone().add(tmpTimeZone);
+					}
 				}
+				
+				Set<Carrier> localCarrier=country.getCarrier();
+				if(localCarrier!=null){
+					for(Carrier tmpCarrier:localCarrier){
+						tmpCarrier.getCountry().add(localCountry);
+						localCountry.getCarrier().add(tmpCarrier);
+					}
+				}
+				
+				
+				Session session=sessionFactory.openSession();			
+				session.beginTransaction();			
+				session.persist(localCountry);			
+				session.getTransaction().commit();		
+				session.close();
+				return true;
 			}
-			
-			/*Set<Carrier> localCarrier=country.getCarrier();
-			if(localCarrier!=null){
-				localCountry.getCarrier().add((Carrier) localCarrier);
-			}*/
-			
-			
-			Session session=sessionFactory.openSession();			
-			session.beginTransaction();			
-			session.persist(localCountry);			
-			session.getTransaction().commit();		
-			session.close();
-			return true;
-	//	}
 		
-	//	return false;
+			return false;
 		
 	}
 	

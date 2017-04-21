@@ -6,7 +6,17 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 public class CountryResponse extends ResponseModel{
 
-	private Country country;
+	/*private Country country;
+*/
+	private String result;
+	
+	public String getResult() {
+		return result;
+	}
+
+	public void setResult(String result) {
+		this.result = result;
+	}
 
 	public CountryResponse(){
 		super();
@@ -14,17 +24,17 @@ public class CountryResponse extends ResponseModel{
 	
 	public CountryResponse(Status status, String failureReason) {
 		super(status, failureReason);
-		// 
+
 	}
 	
-	public Country getCountry() {
+/*	public Country getCountry() {
 		return country;
 	}
 
 	public void setCountry(Country country) {
 		this.country = country;
 	}
-	
+*/	
 	
 
 }
