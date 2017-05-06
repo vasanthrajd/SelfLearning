@@ -20,11 +20,16 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 import javax.xml.soap.MessageFactory;
 
+import org.eclipse.persistence.internal.oxm.record.ObjectMarshalContext;
 import org.vasanth.messager.bean.MessageFilter;
 import org.vasanth.messager.model.ArrayMessage;
 import org.vasanth.messager.model.Message;
 import org.vasanth.messager.model.Profile;
 import org.vasanth.messager.service.MessageServices;
+import org.vasanth.messager.service.ProfileService;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 /*
  * @Path -- This Path Annotation will help jersey servlet to point to which class it should refer
@@ -167,5 +172,32 @@ public class MessageResource {
 		System.out.println(profile.getLastName());
 		return "ArrayMessage"; 
 	}
-	
+	@Path("/profile")
+	@GET
+	public String getProfile(){
+		ProfileService profileService=new ProfileService();
+		Profile profile=ProfileService.getProfiles();
+		ObjectMapper mapper=new ObjectMapper();
+		String jsonString = null;
+		try {
+			
+			jsonString = mapper.writeValueAsString(profile);
+			
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return jsonString;
+	}
+	@Path("/profile")
+	@POST
+	public String setProfile(Profile profile1){
+		ProfileService profileService=new ProfileService();
+		
+		ObjectMapper mapper=new ObjectMapper();
+		
+		String jsonString = null;
+		
+		return jsonString;
+	}
 }

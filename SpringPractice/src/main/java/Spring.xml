@@ -1,0 +1,196 @@
+<beans  
+    xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xmlns:p="http://www.springframework.org/schema/p" 
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans  
+               http://www.springframework.org/schema/beans/spring-beans-3.0.xsd http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-3.1.xsd" >
+		
+	<!--  Default Init and Destroy Method and it will be used for most of the bean class. 
+    <default-init-method="myInit" default-destroy-method="disposeMethod" >  
+	-->
+	 <!-- 
+	 	<bean id="triangle" class="SpringProject.SpringPractice.Triangle">
+	
+	 
+		It is Setter Injection from the XML File 
+		<property  value="Isoceles Triangle" /> 
+	
+		Constructor Injection,
+		It can have any number of constructor arguments to assign the value. 
+		It does the conversion of values into it's appropriate data. It is done by the spring.
+
+		
+		
+			<constructor-arg value="Isoceles" /> '
+		
+		
+		 To show the identity of the constructor in the Bean Class 
+			<constructor-arg index="1" value="20" />	
+			<constructor-arg index="0" value="Isoceles"/>
+		</bean>
+		 -->
+		 
+	<!--  Example for the DisplayNameBeanPostProcessor and Bean Inheritance Spring.xml 	, 
+		  Bean Inheritance with List Collection with options for merge.
+	
+		<bean class="SpringProject.SpringPractice.DisplayNameBeanPostProcessor"></bean>
+		 
+		<bean id="parentTriangle" class="SpringProject.SpringPractice.Triangle" abstract="true">
+				<property name="pointA" ref="point1" />
+				<property name="points">
+					<list>
+						<ref bean="point1" />
+					</list>
+				</property>
+		</bean>
+		
+		<bean id="triangle1" class="SpringProject.SpringPractice.Triangle" parent="parentTriangle">
+			<property name="pointB" >
+				<bean class="SpringProject.SpringPractice.Point">
+					<property name="x" value="-20" />
+					<property name="y" value="0" />
+				</bean>
+			</property>
+			<property name="pointC" >	
+				<bean class="SpringProject.SpringPractice.Point">
+					<property name="x" value="20" />
+					<property name="y" value="0" />
+				</bean>
+			</property>
+			<property name="points">
+				<list merge="true">
+					<ref bean="point1" />
+					<ref bean="point1" />
+					<ref bean="point1" /> 
+				</list>
+			
+			</property>
+		</bean> -->
+	<!--
+		It is specific to single bean 
+		<bean id="triangle" class="SpringProject.SpringPractice.Triangle" >
+	 -->
+	 
+		<!-- Container to hold BeanPostProcessing and custom Post Processing by our own and 
+		<bean id="triangle" class="SpringProject.SpringPractice.Triangle" init-method="myInit" destroy-method="disposeMethod"> -->
+			<!-- Injecting the Objects -->
+		<!--	<property name="pointA" ref="point1" />-->
+			<!-- 
+				<property name="pointB" ref="point2" >
+			 -->
+		<!--	 <property name="pointB" >
+				<bean class="SpringProject.SpringPractice.Point">
+					<property name="x" value="-20" />
+					<property name="y" value="0" />
+				</bean>
+			</property> -->
+			<!-- Inner Bean, where it don't need the Ref to be added 
+				<property name="pointC" ref="point3" >
+			-->
+		<!--	<property name="pointC" >
+				<bean id="point3" class="SpringProject.SpringPractice.Point">
+					<property name="x" value="20" />
+					<property name="y" value="0" />
+				</bean> 
+			</property> -->
+			 
+			 <!--  Injecting the Collections -->
+			<!--  <property name="points">
+			 <list>
+					<ref bean="point1" />
+					<ref bean="point2" />
+					<ref bean="point3" /> 
+			 </list>
+			 </property>  
+		</bean>-->
+		
+	<!--	<bean id="point1" class="SpringProject.SpringPractice.Point">
+			<property name="x" value="0" />
+			<property name="y" value="0" />
+		</bean>
+		<bean class="SpringProject.SpringPractice.MyBeanFactoryPP"></bean>	
+		<alias name="triangle" alias="triangle-alias" /> -->
+	
+	<!--<bean id="point2" class="SpringProject.SpringPractice.Point">
+			<property name="x" value="-20" />
+			<property name="y" value="0" />
+		</bean>
+		<bean id="point3" class="SpringProject.SpringPractice.Point">
+			<property name="x" value="20" />
+			<property name="y" value="0" />
+		</bean>
+		
+		 -->
+
+		<bean id="triangle1" class="SpringProject.SpringPractice.Triangle" >
+			<property name="pointA" ref="point1" />
+			<property name="pointB" ref="point2" />
+			<property name="pointC" ref="point3" />
+		
+		</bean>
+		<bean id="point1" class="SpringProject.SpringPractice.Point">
+			<!-- <property name="x" value="${pointA.pointX}" />
+			<property name="y" value="${pointB.pointY}" /> -->  
+			 <property name="x" value="100" />
+			<property name="y" value="200" /> 
+		</bean>
+		<bean id="point2" class="SpringProject.SpringPractice.Point">
+			<property name="x" value="-20" />
+			<property name="y" value="0" />
+		</bean>
+	 	
+	 	<bean id="point3" class="SpringProject.SpringPractice.Point">
+	 		<qualifier value="circleRelated" />
+		<!-- <property name="x" value="${pointA.pointX}" />
+			<property name="y" value="${pointB.pointY}" />  -->
+			<property name="x" value="-20" />
+			<property name="y" value="0" />
+		</bean>
+		
+		
+		<bean id="center" class="SpringProject.SpringPractice.Point">
+			<property name="x" value="-20" />
+			<property name="y" value="0" />
+		</bean>  
+		<!-- 
+		ComponetAnnontation above the Bean Class.  
+		<bean id="circle" class="SpringProject.SpringPractice.Circle" >
+			 <property name="center" ref="point1" />  
+			
+		</bean>
+		-->
+		
+		<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource" >
+			<property name="basenames">
+				<list>
+					<value>mymessages</value>
+					<value>SpringProject/SpringPractice/mymessages</value>
+					
+				</list>										
+			</property>
+		</bean>
+		
+		
+		<context:annotation-config/>
+		<context:component-scan base-package="SpringProject.SpringPractice"  />
+		<!-- 
+		Note: There is common, tag which will help to define annonation related class with a single name and also for all postProcessor  
+		<context:annonation-config />
+		 -->
+		
+		<!--  Bean Post Processing allow us to validate the Bean present in the Container it is default.
+		<bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor"> 
+		
+		</bean>	-->
+		<!-- 
+		Place Holder to initialize the bean property from the property File. 
+		<bean class="SpringProject.SpringPractice.MyBeanFactoryPP" />
+		<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+			<property name="locations" value="pointsconfig.properties" />
+			<property name="location" value="classpath:SpringProject/SpringPractice/pointsconfig1.properties
+		" />
+		</bean>   -->
+		
+  </beans>
