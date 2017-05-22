@@ -8,7 +8,7 @@ body {
 }
 </style>
 </head>
-<body>${dataInfo}
+<body>Message Returned by the controller (ShowData) ${dataInfo}
  
 	<br>
 	<br>

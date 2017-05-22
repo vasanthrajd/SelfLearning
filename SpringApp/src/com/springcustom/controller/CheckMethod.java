@@ -14,13 +14,17 @@ public class CheckMethod {
 	public ModelAndView checkMethodAdmin(HttpServletRequest request,HttpServletResponse response){
 		String name=request.getParameter("Name");
 		String password=request.getParameter("Password");
-		
-		if(password.equals("Vasanthraj")){
-			String userNote="Welcome you are Logged in as :"+name;
-			return new ModelAndView("admin","showSuccess",userNote);
+		String successNote="Welcome you are Logged in as:";
+		String failureNote="Please Provide Valid Credentials :";
+		if(name.equals("admin")){
+			if(password.equals("Vasanthraj")){
+				return new ModelAndView("success","showSuccess",successNote + name);
+			}else{
+				return new ModelAndView("Error","showFailure", failureNote);
+			}
 		}else{
-			String userNote="Please Provide propery password";
-			return new ModelAndView("Error","showFailure",userNote);
+			
+			return new ModelAndView("Error","showFailure",failureNote);
 		}
 	}
 }

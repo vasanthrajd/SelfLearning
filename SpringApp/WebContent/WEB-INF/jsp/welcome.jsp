@@ -8,7 +8,7 @@ body {
 }
 </style>
 </head>
-<body>${message2}
+<body>Message Returned by the controller (HelloWorld) ${message2}
  
 	<br>
 	<br>

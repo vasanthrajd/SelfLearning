@@ -8,7 +8,7 @@ body {
 }
 </style>
 </head>
-<body>${showFailure}
+<body>Message Returned by the controller (CheckMethod) ${showFailure}
  
 	<br>
 	<br>
@@ -20,7 +20,11 @@ body {
 			target="_blank">here</a> for all Java and <a
 			href='https://crunchify.com/category/spring-mvc/' target='_blank'>here</a>
 		for all Spring MVC, Web Development examples.<br>
+		<br>
+		<a href="index.jsp" >
+		Click here to load the previous page
+		</a> 
 	</div>
-	<jsp:include page="/index.jsp"></jsp:include>  
+<!-- 	<jsp:include page="/index.jsp"></jsp:include> -->  
 </body>
 </html>
