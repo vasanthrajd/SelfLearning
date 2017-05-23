@@ -41,5 +41,18 @@ body {
 				value="login" />
 		</form>
 	</div>
+	<div style="text-align: center">
+		<h2>
+			Add Employee :
+			<a href="employeeForm.html">  Add
+			</a>
+		</h2>
+		<br>
+		<h2>
+			View Employee :
+			<a href="viewEmployeeForm.html"> View
+			</a>
+		</h2>
+	</div>
 </body>
 </html>
